@@ -1,0 +1,86 @@
+variables:
+  main: cmd/deadshot/main.go
+  binary_name: deadshot
+  ldflags: -s -w -X github.com/jon4hz/deadshot/internal/version.Version={{.Version}} -X github.com/jon4hz/deadshot/internal/version.Commit={{.Commit}} -X github.com/jon4hz/deadshot/internal/version.Date={{.Date}} -X github.com/jon4hz/deadshot/internal/version.BuiltBy=goreleaser
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+
+builds:
+  -
+    env:
+      - CGO_ENABLED=0
+    main: '{{ .Var.main }}'
+    binary: '{{ .Var.binary_name }}'
+    ldflags: '{{ .Var.ldflags }}'
+    flags:
+      - -trimpath
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+      - "386"
+      - arm
+    goarm:
+      - "7"
+    ignore:
+      - goos: windows
+        goarch: arm64
+      - goos: windows
+        goarm: "7"
+    hooks:
+      post: upx -9 "{{ .Path }}"
+
+archives:
+  - 
+    name_template: "{{ .Var.binary_name }}-v{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}{{ if .Mips }}-{{ .Mips }}{{ end }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    replacements:
+      darwin: macOS
+      386: i386
+    files:
+      - LICENSE
+      #- README.md
+      - CHANGELOG.md
+
+checksum:
+  name_template: 'checksums.txt'
+
+nfpms:
+  - 
+    file_name_template: "{{ .Var.binary_name }}-v{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}{{ if .Mips }}-{{ .Mips }}{{ end }}"
+    package_name: deadshot
+    vendor: jon4hz
+    homepage: https://jon4hz.io
+    maintainer: jon4hz <me@jon4hz.io>
+    description: terminal based trading bot
+    formats:
+      - apk
+      - deb
+      - rpm
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+  groups:
+    - title: 'New Features'
+      regexp: "^.*feat[(\\w)]*:+.*$"
+      order: 0
+    - title: 'Bug fixes'
+      regexp: "^.*fix[(\\w)]*:+.*$"
+      order: 10
+    - title: Others
+      order: 999
