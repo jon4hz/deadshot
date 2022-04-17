@@ -17,3 +17,5 @@ artifacts
 secrets.json
 typechain-types
 testing
+manpages
+completions
