@@ -15,25 +15,99 @@
 ```
 A terminal based trading bot
 
-## Generate abi packages
-By using abigen, you can create native golang packages with bindings for a specific abi.  
+## Install
+The **newest** release can always be found [here][release].  
+
+[release]: https://github.com/jon4hz/deadshot/releases
+
+### Windows
+#### manually
+
+1. Download the archive and unzip it
+2. Go to the folder with the program in it
+3. Open a terminal in the folder with right click -> "Open in Windows Terminal"
+
+The command `.\deadshot.exe` starts the bot.
+
+If you are using Windows 10, start the bot in the [Windows Terminal][winterm] and not Powershell.
+
+[winterm]: https://www.microsoft.com/en-US/p/windows-terminal/9n0dx20hk701
+
+### Linux
+
+#### apt
+Linux distributions like debian or ubuntu can use apt to install the binary
 ```bash
-go generate ./...
+echo 'deb [trusted=yes] https://apt.fury.io/jon4hz/ /' | sudo tee /etc/apt/sources.list.d/jon4hz.list
+sudo apt update
+sudo apt install deadshot
 ```
 
-## Create a release
-To create a new release, run `make release`.  
-This will create a new tag based on the last commit so make sure to commit all changes. Make will also push the new tag, which will trigger the build pipeline.  
-The pipeline injects the current version and build code which is required by the unlocking system. So make sure to follow the tag annotation vX.X.X 
+#### yum
+```bash
+echo '[jon4hz]
+name=jon4hz
+baseurl=https://yum.fury.io/jon4hz/
+enabled=1
+gpgcheck=0' | sudo tee /etc/yum.repos.d/jon4hz.repo
+sudo yum install deadshot
+```
 
-## Build dependencies
+#### deb, rpm and apk packages
+
+Download the `.deb`, `.rpm` or `.apk` package.  
+
+**deb**
+```
+# dpkg -i <release_name>.deb
+```
+
+**rpm**
+```
+# rpm -i <release_name>.rpm
+```
+
+**apk**
+```
+# apk add --allow-untrusted <release_name>.apk
+```
+
+#### manually
+1. Download the archive and unzip it
+2. Open a terminal in the folder with right click -> "Open Terminal"
+
+The bot can be started with `./deadshot`
+
+### MacOS
+#### manually
+1. Download the archive and unzip it
+2. Open a terminal in the folder with right click -> "Open Terminal"
+
+The bot can be started with `./deadshot`
+
+
+## Build
+
+### Build dependencies
 - [go](https://go.dev/)
 - [make](https://www.gnu.org/software/make/)
 - [abigen](https://github.com/ethereum/go-ethereum)
 
+### Build
+Clone the repository
+```
+$ git clone https://github.com/jon4hz/deadshot && cd deadshot
+```
+
+Build the software
+```
+$ go build -o deadshot cmd/deadshot/main.go
+```
+
 ## Disclaimer
 This bot can be used to trade cryptocurrencies. I hereby disclaim any liability and will not be held responsible for any potential losses.
 I wrote this bot while I learned go, so there might be bugs and mistakes in the code.
+
 
 ## Acknowledgement
 - [charmbracelet](https://github.com/charmbracelet) for their charming cli tools
