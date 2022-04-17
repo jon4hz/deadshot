@@ -20,19 +20,6 @@ The **newest** release can always be found [here][release].
 
 [release]: https://github.com/jon4hz/deadshot/releases
 
-### Windows
-#### manually
-
-1. Download the archive and unzip it
-2. Go to the folder with the program in it
-3. Open a terminal in the folder with right click -> "Open in Windows Terminal"
-
-The command `.\deadshot.exe` starts the bot.
-
-If you are using Windows 10, start the bot in the [Windows Terminal][winterm] and not Powershell.
-
-[winterm]: https://www.microsoft.com/en-US/p/windows-terminal/9n0dx20hk701
-
 ### Linux
 
 #### apt
@@ -84,6 +71,19 @@ The bot can be started with `./deadshot`
 2. Open a terminal in the folder with right click -> "Open Terminal"
 
 The bot can be started with `./deadshot`
+
+### Windows
+#### manually
+
+1. Download the archive and unzip it
+2. Go to the folder with the program in it
+3. Open a terminal in the folder with right click -> "Open in Windows Terminal"
+
+The command `.\deadshot.exe` starts the bot.
+
+If you are using Windows 10, start the bot in the [Windows Terminal][winterm] and not Powershell.
+
+[winterm]: https://www.microsoft.com/en-US/p/windows-terminal/9n0dx20hk701
 
 
 ## Build
