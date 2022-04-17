@@ -11,7 +11,7 @@ before:
 variables:
   main: "./cmd/deadshot"
   binary_name: "deadshot"
-  ldflags: -s -w -X github.com/jon4hz/deadshot/internal/version.Version={{.Version}} -X github.com/jon4hz/deadshot/internal/version.Commit={{.Commit}} -X github.com/jon4hz/deadshot/internal/version.Date={{.Date}} -X github.com/jon4hz/deadshot/internal/version.BuiltBy=goreleaser
+  ldflags: -s -w -X github.com/jon4hz/deadshot/internal/version.Version={{ .Version }} -X github.com/jon4hz/deadshot/internal/version.Commit={{ .Commit }} -X github.com/jon4hz/deadshot/internal/version.Date={{ .Date }} -X github.com/jon4hz/deadshot/internal/version.BuiltBy=goreleaser
   description: "terminal based trading bot"
   github_url: "https://github.com/jon4hz/deadshot"
   maintainer: "jonah <me@jon4hz.io>"
