@@ -218,7 +218,7 @@ func (m *Module) Init(c *context.Context) tea.Cmd {
 		},
 	)
 
-	return modules.None
+	return modules.Resize
 }
 
 func (m *Module) Update(msg tea.Msg) tea.Cmd {
