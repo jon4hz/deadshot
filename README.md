@@ -22,6 +22,11 @@ The **newest** release can always be found [here][release].
 
 ### Linux
 
+#### aur
+```
+$ yay -S deadshot-bin
+```
+
 #### apt
 Linux distributions like debian or ubuntu can use apt to install the binary
 ```bash
