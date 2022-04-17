@@ -1,0 +1,46 @@
+name: testing
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "master"
+
+env:
+  goVersion: 1.17
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - 
+      name: Checkout
+      uses: actions/checkout@v2
+    - 
+      name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{env.goVersion}}
+    - 
+      name: Test package
+      run: |
+        go test -v -race ./...
+        
+  build:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+    - 
+      name: Checkout
+      uses: actions/checkout@v2
+    - 
+      name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{env.goVersion}}
+    - 
+      name: Build package
+      run: |
+        go build -v ./...

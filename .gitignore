@@ -1,0 +1,20 @@
+.vscode
+.idea
+.ssh
+bin
+release
+dist
+
+node_modules
+.env
+coverage
+coverage.json
+typechain
+
+#Hardhat files
+cache
+artifacts
+secrets.json
+typechain-types
+data
+testing
