@@ -22,7 +22,7 @@ func GetPairReservesCall(contract string) multicall.ViewCall {
 		pairReserves.getID(contract),
 		contract,
 		"getReserves()(uint256,uint256,uint32)",
-		[]interface{}{},
+		[]any{},
 	)
 }
 
@@ -45,7 +45,7 @@ func GetPairTotalSupplyCall(contract string) multicall.ViewCall {
 		pairTotalSupply.getID(contract),
 		contract,
 		"totalSupply()(uint256)",
-		[]interface{}{},
+		[]any{},
 	)
 }
 
@@ -64,7 +64,7 @@ func GetPairToken0Call(contract string) multicall.ViewCall {
 		pairToken0.getID(contract),
 		contract,
 		"token0()(address)",
-		[]interface{}{},
+		[]any{},
 	)
 }
 
@@ -83,7 +83,7 @@ func GetPairToken1Call(contract string) multicall.ViewCall {
 		pairToken1.getID(contract),
 		contract,
 		"token1()(address)",
-		[]interface{}{},
+		[]any{},
 	)
 }
 
@@ -105,13 +105,13 @@ func GetPairToken0InfoCalls(contract, token string) []multicall.ViewCall {
 		erc20Symbol.getPairTokenInfoID(contract, 0),
 		token,
 		"symbol()(string)",
-		[]interface{}{},
+		[]any{},
 	)
 	vcs[1] = multicall.NewViewCall(
 		erc20Decimals.getPairTokenInfoID(contract, 0),
 		token,
 		"decimals()(uint8)",
-		[]interface{}{},
+		[]any{},
 	)
 	return vcs
 }
@@ -136,13 +136,13 @@ func GetPairToken1InfoCalls(contract, token string) []multicall.ViewCall {
 		erc20Symbol.getPairTokenInfoID(contract, 1),
 		token,
 		"symbol()(string)",
-		[]interface{}{},
+		[]any{},
 	)
 	vcs[1] = multicall.NewViewCall(
 		erc20Decimals.getPairTokenInfoID(contract, 1),
 		token,
 		"decimals()(uint8)",
-		[]interface{}{},
+		[]any{},
 	)
 	return vcs
 }
@@ -166,7 +166,7 @@ func GetPairTokenCall(token0, token1, factory string) multicall.ViewCall {
 		pairToken.getPairTokenID(token0, token1),
 		factory,
 		"getPair(address,address)(address)",
-		[]interface{}{token0, token1},
+		[]any{token0, token1},
 	)
 }
 

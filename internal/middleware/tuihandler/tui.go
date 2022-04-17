@@ -17,7 +17,7 @@ func Init(action middleware.TUIAction) middleware.TUIAction {
 	}
 }
 
-func Skip(skipper interface{}, next middleware.TUIAction) middleware.TUIAction {
+func Skip(skipper any, next middleware.TUIAction) middleware.TUIAction {
 	if skipper, ok := skipper.(skip.Skipper); ok {
 		return func(ctx *context.Context) tea.Cmd {
 			if skipper.Skip(ctx) {
@@ -31,7 +31,7 @@ func Skip(skipper interface{}, next middleware.TUIAction) middleware.TUIAction {
 	return next
 }
 
-func SetSizes(module interface{}, headerWidth, contentWidth, contentHeight, footerWidth int, next middleware.TUIAction) middleware.TUIAction {
+func SetSizes(module any, headerWidth, contentWidth, contentHeight, footerWidth int, next middleware.TUIAction) middleware.TUIAction {
 	switch module := module.(type) {
 	case simpleview.SimpleViewer:
 		module.SetHeaderWidth(headerWidth)

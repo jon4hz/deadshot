@@ -19,7 +19,7 @@ func GetErc20SymbolCall(contract string) multicall.ViewCall {
 		erc20Symbol.getID(contract),
 		contract,
 		"symbol()(string)",
-		[]interface{}{},
+		[]any{},
 	)
 }
 
@@ -38,7 +38,7 @@ func GetErc20DecimalsCall(contract string) multicall.ViewCall {
 		erc20Decimals.getID(contract),
 		contract,
 		"decimals()(uint8)",
-		[]interface{}{},
+		[]any{},
 	)
 }
 
@@ -57,7 +57,7 @@ func GetErc20BalanceOfCall(contract, address string) multicall.ViewCall {
 		erc20BalanceOf.getID(contract),
 		contract,
 		"balanceOf(address)(uint256)",
-		[]interface{}{address},
+		[]any{address},
 	)
 }
 

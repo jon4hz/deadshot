@@ -81,7 +81,7 @@ func InitDB() error {
 	// enable foreign key constraints
 	db.Exec("PRAGMA foreign_keys = ON;")
 
-	tables := []interface{}{
+	tables := []any{
 		&Token{},
 		&Dex{},
 		&Endpoint{},

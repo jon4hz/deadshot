@@ -46,7 +46,7 @@ func TestMulticallClient(t *testing.T) {
 			"key-1",
 			"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
 			"symbol()(string)",
-			[]interface{}{},
+			[]any{},
 		),
 	}
 	res, err := client.call(vcs, nil)

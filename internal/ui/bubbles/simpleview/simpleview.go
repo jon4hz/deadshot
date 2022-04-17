@@ -66,7 +66,7 @@ func (m Model) GetFullContentHeight() int {
 	return m.height - ContentStyle.GetMarginBottom() - ContentStyle.GetMarginTop()
 }
 
-func (m Model) GetContentHeight(module interface{}) int {
+func (m Model) GetContentHeight(module any) int {
 	v, ok := module.(SimpleViewer)
 	if !ok {
 		return 0
@@ -111,7 +111,7 @@ func (m *Model) SetHeight(height int) { m.SetSize(m.width, height) }
 
 func (m *Model) SetWidth(width int) { m.SetSize(width, m.height) }
 
-func (m *Model) View(module interface{}) string {
+func (m *Model) View(module any) string {
 	v, ok := module.(SimpleViewer)
 	if !ok {
 		return m.ContentView(module)
@@ -172,7 +172,7 @@ func (m *Model) View(module interface{}) string {
 	return lipgloss.JoinVertical(lipgloss.Left, sections...)
 }
 
-func (m Model) ContentView(module interface{}) string {
+func (m Model) ContentView(module any) string {
 	c, ok := module.(ContentViewer)
 	if !ok {
 		return ""

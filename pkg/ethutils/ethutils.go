@@ -13,7 +13,7 @@ import (
 )
 
 // IsValidAddress validate hex address.
-func IsValidAddress(iaddress interface{}) bool {
+func IsValidAddress(iaddress any) bool {
 	re := regexp.MustCompile("^0x[0-9a-fA-F]{40}$")
 	switch v := iaddress.(type) {
 	case string:
@@ -26,7 +26,7 @@ func IsValidAddress(iaddress interface{}) bool {
 }
 
 // IsZeroAddress validate if it's a 0 address.
-func IsZeroAddress(iaddress interface{}) bool {
+func IsZeroAddress(iaddress any) bool {
 	var address common.Address
 	switch v := iaddress.(type) {
 	case string:
@@ -43,7 +43,7 @@ func IsZeroAddress(iaddress interface{}) bool {
 }
 
 // ToDecimal wei to decimals.
-func ToDecimal(ivalue interface{}, decimals uint8) decimal.Decimal {
+func ToDecimal(ivalue any, decimals uint8) decimal.Decimal {
 	value := new(big.Int)
 	switch v := ivalue.(type) {
 	case string:
@@ -60,7 +60,7 @@ func ToDecimal(ivalue interface{}, decimals uint8) decimal.Decimal {
 }
 
 // ToWei decimals to wei.
-func ToWei(iamount interface{}, decimals uint8) *big.Int {
+func ToWei(iamount any, decimals uint8) *big.Int {
 	amount := decimal.NewFromFloat(0)
 	switch v := iamount.(type) {
 	case string:
