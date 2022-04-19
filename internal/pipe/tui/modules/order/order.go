@@ -58,7 +58,8 @@ type Module struct {
 	helpPanel       *panel.Model
 	buyTargetPanel  *panel.Model
 	sellTargetPanel *panel.Model
-	tradePanel      *panel.Model
+	buyTradePanel   *panel.Model
+	sellTradePanel  *panel.Model
 	logPanel        *panel.Model
 }
 
@@ -83,7 +84,12 @@ func New(module *modules.Default) *Module {
 		lipgloss.RoundedBorder(),
 		style.GetActiveColor(), style.GetInactiveColor(),
 	)
-	tradePanel := panel.NewModel(
+	buyTradePanel := panel.NewModel(
+		false, true,
+		lipgloss.RoundedBorder(),
+		style.GetActiveColor(), style.GetInactiveColor(),
+	)
+	sellTradePanel := panel.NewModel(
 		false, true,
 		lipgloss.RoundedBorder(),
 		style.GetActiveColor(), style.GetInactiveColor(),
@@ -107,7 +113,8 @@ func New(module *modules.Default) *Module {
 		helpPanel:         helpPanel,
 		buyTargetPanel:    buyTargetPanel,
 		sellTargetPanel:   sellTargetPanel,
-		tradePanel:        tradePanel,
+		buyTradePanel:     buyTradePanel,
+		sellTradePanel:    sellTradePanel,
 		logPanel:          logPanel,
 		logChan:           make(chan string),
 		tradeDispatchCtx:  tdctx,
@@ -172,7 +179,8 @@ func (m *Module) SetContentSize(width, height int) {
 	}
 	m.infoPanel.SetSize(width/2, height/3)
 	m.helpPanel.SetSize(width/2, height/3)
-	m.tradePanel.SetSize(width/2, height/3)
+	m.buyTradePanel.SetSize(width/4, height/3)
+	m.sellTradePanel.SetSize(width/4, height/3)
 	m.logPanel.SetSize(width, height/3)
 	m.buyTargetPanel.SetSize(width/4, height/3)
 	m.sellTargetPanel.SetSize(width/4, height/3)
@@ -186,16 +194,18 @@ func (m *Module) Content() string {
 		m.helpPanel.SetContent(m.helpView())
 		m.buyTargetPanel.SetContent(m.buyTargetView())
 		m.sellTargetPanel.SetContent(m.sellTargetView())
-		m.tradePanel.SetContent(m.tradeView())
+		m.buyTradePanel.SetContent(m.buyTradeView())
+		m.sellTradePanel.SetContent(m.sellTradeView())
 		m.logPanel.SetContent(m.logView())
-		// m.logPanel.GotoBottom()
+		//.logPanel.GotoBottom() // causes a runtime panic (?)
 
 		middleRow := make([]string, 0)
 		middleRow = append(middleRow, m.buyTargetPanel.View())
+		var padding string
 		if m.width%4 != 0 {
-			middleRow = append(middleRow, " ")
+			padding = " "
 		}
-		middleRow = append(middleRow, m.sellTargetPanel.View(), m.tradePanel.View())
+		middleRow = append(middleRow, padding, m.sellTargetPanel.View(), m.buyTradePanel.View(), padding, m.sellTradePanel.View())
 
 		return lipgloss.JoinVertical(
 			lipgloss.Top,
@@ -226,7 +236,7 @@ func (m Module) infoView() string {
 	return s
 }
 
-func (m Module) tradeView() string {
+func (m Module) buyTradeView() string {
 	var s strings.Builder
 	buyTrade := m.D.Ctx.Price.GetBuyTrade()
 	if buyTrade == nil {
@@ -235,7 +245,7 @@ func (m Module) tradeView() string {
 	if buyTrade.Route == nil {
 		return ""
 	}
-	s.WriteString("Price: " + buyTrade.ExecutionPrice.Invert().ToSignificant(10) + "\n")
+	s.WriteString("Buy Price: " + buyTrade.ExecutionPrice.Invert().ToSignificant(10) + "\n")
 	nb := m.D.Ctx.Trade.GetNextBuyTarget()
 	var slippage float64
 	if nb != nil {
@@ -260,21 +270,49 @@ func (m Module) tradeView() string {
 		}
 		s.WriteString(v.Symbol() + "\n")
 	}
+	if m.D.Ctx.Price.GetError() != nil {
+		s.WriteString("Warning: failed to reload the price...")
+	}
+	return s.String()
+}
+
+// TODO: fix duplicated lines (buyTradeView).
+func (m Module) sellTradeView() string {
+	var s strings.Builder
 	sellTrade := m.D.Ctx.Price.GetSellTrade()
-	if sellTrade != nil {
-		if sellTrade.Route != nil {
-			s.WriteString("Sell Route: ")
-			for i, v := range sellTrade.Route.Path {
-				if i < len(sellTrade.Route.Path)-1 {
-					s.WriteString(v.Symbol() + " -> ")
-					continue
-				}
-				s.WriteString(v.Symbol() + "\n")
-			}
+	if sellTrade == nil {
+		return ""
+	}
+	if sellTrade.Route == nil {
+		return ""
+	}
+	s.WriteString("Sell Price: " + sellTrade.ExecutionPrice.ToSignificant(10) + "\n")
+	nb := m.D.Ctx.Trade.GetNextBuyTarget()
+	var slippage float64
+	if nb != nil {
+		slippage = nb.GetSlippage()
+	} else {
+		slippage = database.DefaultSlippage
+	}
+	min, _ := sellTrade.MinimumAmountOut(uniswap.NewPercent(big.NewInt(int64(slippage)), big.NewInt(10000)))
+	s.WriteString("Minimum received: " + min.ToSignificant(6) + " ")
+	s.WriteString(m.D.Ctx.Trade.GetToken0().GetSymbol() + "\n")
+	priceImpact := chain.GetActualPriceImpact(sellTrade, m.D.Ctx.Trade.GetDex().GetFeeBigInt())
+	if priceImpact < 0.01 {
+		s.WriteString("Price Impact: < 0.01%\n")
+	} else {
+		s.WriteString(fmt.Sprintf("Price Impact: %f", priceImpact) + "%\n")
+	}
+	s.WriteString("Sell Route:  ")
+	for i, v := range sellTrade.Route.Path {
+		if i < len(sellTrade.Route.Path)-1 {
+			s.WriteString(v.Symbol() + " -> ")
+			continue
 		}
+		s.WriteString(v.Symbol() + "\n")
 	}
 	if m.D.Ctx.Price.GetError() != nil {
-		s.WriteString("Warning: failed to reload the price, trying again...")
+		s.WriteString("Warning: failed to reload the price...")
 	}
 	return s.String()
 }
