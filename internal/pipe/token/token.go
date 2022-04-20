@@ -54,7 +54,12 @@ func (Pipe) Run(ctx *context.Context) error {
 		logging.Log.WithField("error", err).Error("Failed to save token")
 	}
 	ctx.TokenContract = "" // reset the contract address
-	ctx.Token0 = token
+
+	if ctx.Token0 == nil {
+		ctx.Token0 = token
+	} else {
+		ctx.Token1 = token
+	}
 	return nil
 }
 
