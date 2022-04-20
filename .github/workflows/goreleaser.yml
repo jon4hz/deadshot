@@ -34,13 +34,6 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
-      - 
-        name: install abigen
-        run: |
-          GO111MODULE="off" go get -d -u github.com/ethereum/go-ethereum
-          cd $(go env GOPATH)/src/github.com/ethereum/go-ethereum/cmd/abigen/
-          go build -o abigen main.go
-          sudo mv abigen /usr/local/bin/
       -
         name: Import GPG key
         id: import_gpg
