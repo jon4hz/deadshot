@@ -43,6 +43,7 @@ func (p Pipe) Run(ctx *context.Context) error {
 		if err != nil {
 			if errors.Is(err, chain.ErrNoTradeFound) || errors.Is(err, chain.ErrNoPairsFound) {
 				ctx.TradeType = database.DefaultTradeTypes.GetSnipe()
+				return nil
 			}
 			return err
 		}
