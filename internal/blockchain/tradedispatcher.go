@@ -162,7 +162,7 @@ func (c *Client) dispatchTrade(cancel context.CancelFunc, wallet *database.Walle
 					return err
 				}
 				// SWAP
-				go handleSwap(cancel, c, logStream, wallet, trade, v)
+				go handleSwap(cancel, c, logStream, wallet, trade, v, price)
 			}
 		}
 		return nil
@@ -203,7 +203,7 @@ func (c *Client) dispatchTrade(cancel context.CancelFunc, wallet *database.Walle
 					return err
 				}
 				// SWAP
-				go handleSwap(cancel, c, logStream, wallet, trade, v)
+				go handleSwap(cancel, c, logStream, wallet, trade, v, price)
 			}
 		}
 		return nil
@@ -292,6 +292,7 @@ func handleSwap(
 	wallet *database.Wallet,
 	trade *database.Trade,
 	target *database.Target,
+	price *Price,
 ) {
 	preBal, err := database.FetchBalanceByContractAndNetworkID(trade.GetToken1().GetContract(), trade.GetNetwork().GetID())
 	if err != nil {
@@ -390,7 +391,7 @@ func handleSwap(
 			cancel()
 			return
 		}
-		
+
 		setNextBuyPrice(price, trade)
 
 		rebalanceSellTargets(trade)
@@ -421,7 +422,7 @@ func handleSwap(
 			logging.Log.Info("all sell targets hit, stopping now...")
 			cancel()
 		}
-		
+
 		setNextSellPrice(price, trade)
 	}
 }
