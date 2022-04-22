@@ -2,6 +2,7 @@
 [![testing](https://github.com/jon4hz/deadshot/actions/workflows/testing.yml/badge.svg)](https://github.com/jon4hz/deadshot/actions/workflows/testing.yml)
 [![lint](https://github.com/jon4hz/deadshot/actions/workflows/lint.yml/badge.svg)](https://github.com/jon4hz/deadshot/actions/workflows/lint.yml)
 [![goreleaser](https://github.com/jon4hz/deadshot/actions/workflows/goreleaser.yml/badge.svg)](https://github.com/jon4hz/deadshot/actions/workflows/goreleaser.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jon4hz/deadshot)](https://goreportcard.com/report/github.com/jon4hz/deadshot)
 
 ```
       _                _     _           _   
