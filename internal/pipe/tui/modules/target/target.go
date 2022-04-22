@@ -135,6 +135,7 @@ func NewModule(module *modules.Default, targetType Type) *Module {
 		kv:         keyvalue.New(),
 		targetList: list.New(nil, del, 0, 0),
 		targetType: targetType,
+		pipeCancel: func() {},
 	}
 	switch targetType {
 	case TypeBuy:
@@ -219,6 +220,9 @@ func (m *Module) Update(msg tea.Msg) tea.Cmd {
 
 			case key.Matches(msg, defaultKeys.Back):
 				m.pipeCancel()
+
+				m.D.Ctx.BuyTargets = make(database.Targets, 0) // maybe remove this if multiple buy targets should be allowed
+
 				if m.D.ForkBackMsg != 0 {
 					return func() tea.Msg { return m.D.ForkBackMsg }
 				}
