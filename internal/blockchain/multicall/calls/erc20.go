@@ -4,7 +4,7 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/jon4hz/web3-multicall-go/multicall"
+	"github.com/jon4hz/geth-multicall/multicall"
 )
 
 var (

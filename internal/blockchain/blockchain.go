@@ -13,8 +13,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/hashicorp/go-retryablehttp"
-	"github.com/jon4hz/web3-go/ethrpc"
-	"github.com/jon4hz/web3-go/ethrpc/provider/httprpc"
 	"github.com/sirupsen/logrus"
 )
 
@@ -22,7 +20,6 @@ const Zero = "0x0000000000000000000000000000000000000000"
 
 type Client struct {
 	Client *ethclient.Client
-	rpc    *ethrpc.ETH // required for the multicall package
 	multic *multicall.Client
 }
 
@@ -56,25 +53,7 @@ func newRetryableHTTPClient(node, multicallHex string) (*Client, error) {
 
 	c.Client = ethclient.NewClient(rpc)
 
-	httprpc, err := httprpc.New(node)
-	if err != nil {
-		logging.Log.WithFields(logrus.Fields{
-			"error":    err,
-			"endpoint": node,
-		}).Error("failed to connect to node")
-		return nil, err
-	}
-	httprpc.SetHTTPClient(httpc)
-	c.rpc, err = ethrpc.New(httprpc)
-	if err != nil {
-		logging.Log.WithFields(logrus.Fields{
-			"error":    err,
-			"endpoint": node,
-		}).Error("failed to connect to node")
-		return nil, err
-	}
-
-	m, err := multicall.Init(c.rpc, multicallHex)
+	m, err := multicall.Init(c.Client, multicallHex)
 	if err != nil {
 		return nil, err
 	}
@@ -96,16 +75,7 @@ func newClient(node, multicallHex string) (*Client, error) {
 		return nil, err
 	}
 
-	c.rpc, err = ethrpc.NewWithDefaults(node)
-	if err != nil {
-		logging.Log.WithFields(logrus.Fields{
-			"error":    err,
-			"endpoint": node,
-		}).Error("failed to connect to node")
-		return nil, err
-	}
-
-	m, err := multicall.Init(c.rpc, multicallHex)
+	m, err := multicall.Init(c.Client, multicallHex)
 	if err != nil {
 		return nil, err
 	}

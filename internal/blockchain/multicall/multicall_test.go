@@ -3,16 +3,15 @@ package multicall
 import (
 	"testing"
 
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/jon4hz/deadshot/internal/database"
 
-	"github.com/jon4hz/web3-go/ethrpc"
-	"github.com/jon4hz/web3-multicall-go/multicall"
+	"github.com/jon4hz/geth-multicall/multicall"
 )
 
 var client *Client
 
 func teardown() {
-	client.Close()
 
 	if err := database.Close(); err != nil {
 		panic(err)
@@ -21,11 +20,11 @@ func teardown() {
 
 // unittest are executed on the polygon network
 func init() {
-	rpc, err := ethrpc.NewWithDefaults("https://polygon-rpc.com/")
+	eth, err := ethclient.Dial("https://polygon-rpc.com/")
 	if err != nil {
 		panic(err)
 	}
-	client, err = Init(rpc, "0x8a233a018a2e123c0D96435CF99c8e65648b429F")
+	client, err = Init(eth, "0x8a233a018a2e123c0D96435CF99c8e65648b429F")
 	if err != nil {
 		panic(err)
 	}
