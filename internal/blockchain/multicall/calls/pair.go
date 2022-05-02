@@ -5,7 +5,7 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/jon4hz/web3-multicall-go/multicall"
+	"github.com/jon4hz/geth-multicall/multicall"
 )
 
 var (

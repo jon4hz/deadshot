@@ -12,9 +12,9 @@ require (
 	github.com/google/gops v0.3.22
 	github.com/hashicorp/go-retryablehttp v0.7.1
 	github.com/jon4hz/ethconvert v0.0.1
+	github.com/jon4hz/geth-multicall v0.0.20
 	github.com/jon4hz/go-httpstat v0.2.2
 	github.com/jon4hz/web3-go v0.0.7
-	github.com/jon4hz/web3-multicall-go v0.0.18
 	github.com/mattn/go-isatty v0.0.14
 	github.com/miguelmota/go-ethereum-hdwallet v0.1.1
 	github.com/muesli/reflow v0.3.0

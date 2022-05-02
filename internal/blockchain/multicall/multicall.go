@@ -1,34 +1,30 @@
 package multicall
 
 import (
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/jon4hz/deadshot/internal/logging"
 
-	"github.com/jon4hz/web3-go/ethrpc"
-	"github.com/jon4hz/web3-multicall-go/multicall"
+	"github.com/jon4hz/geth-multicall/multicall"
 	"github.com/sirupsen/logrus"
 )
 
 type Client struct {
 	multicall.Multicall
-	rpc *ethrpc.ETH
 }
 
 // Init initializes the mulicall client.
-func Init(rpc *ethrpc.ETH, contract string) (*Client, error) {
+func Init(rpc *ethclient.Client, contract string) (*Client, error) {
 	var err error
-	client, err := multicall.New(rpc, multicall.ContractAddress(contract))
+	client, err := multicall.New(rpc, multicall.WithContractAddress(contract))
 	if err != nil {
-		rpcC, _ := rpc.GetClient()
 		logging.Log.WithFields(logrus.Fields{
 			"error":     err,
-			"endpoint":  rpcC,
 			"multicall": contract,
 		}).Error("failed to create multicall client")
 		return nil, err
 	}
 	return &Client{
 		client,
-		rpc,
 	}, nil
 }
 
@@ -55,8 +51,4 @@ func (c *Client) call(calls multicall.ViewCalls, opts *CallOpts) (*multicall.Res
 		}).Error("Error executing web3 multicall")
 	}
 	return res, err
-}
-
-func (c *Client) Close() {
-	c.rpc.Stop()
 }
