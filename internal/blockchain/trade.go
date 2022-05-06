@@ -321,7 +321,7 @@ func (c *Client) CheckListed(token0, token1 *database.Token, dex *database.Dex, 
 }
 
 // Swap triggers a swap of a target.
-func (c *Client) Swap(wallet *database.Wallet, trade *database.Trade, target *database.Target) (*types.Transaction, error) { // make target method
+func (c *Client) Swap(wallet *database.Wallet, trade *database.Trade, target *database.Target) (*types.Transaction, error) {
 	var t0, t1 *database.Token
 	if target.GetTargetType().GetType() == database.DefaultTargetTypes.GetBuy().GetType() {
 		t0 = trade.GetToken0()
