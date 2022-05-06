@@ -14,7 +14,6 @@ require (
 	github.com/jon4hz/ethconvert v0.0.1
 	github.com/jon4hz/geth-multicall v0.0.20
 	github.com/jon4hz/go-httpstat v0.2.2
-	github.com/jon4hz/web3-go v0.0.7
 	github.com/mattn/go-isatty v0.0.14
 	github.com/miguelmota/go-ethereum-hdwallet v0.1.1
 	github.com/muesli/reflow v0.3.0
@@ -87,7 +86,6 @@ require (
 	golang.org/x/sys v0.0.0-20220412211240-33da011f77ad // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	golang.org/x/time v0.0.0-20210611083556-38a9dc6acbc6 // indirect
 	gopkg.in/ini.v1 v1.66.4 // indirect
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
