@@ -677,11 +677,11 @@ func (m *Module) setTradeInfoToWorkflow(info *uniswap.Trade) {
 	}
 	switch m.D.Ctx.Trade.GetBuyTargets()[0].GetAmountMode().GetName() {
 	case database.DefaultAmountModes.GetAmountIn().GetName():
-		min, _ := info.MinimumAmountOut(uniswap.NewPercent(big.NewInt(int64(m.D.Ctx.Trade.GetBuyTargets()[0].GetSlippage())), big.NewInt(10000))) // support up to two decimal places for the slippage
+		min, _ := info.MinimumAmountOut(uniswap.NewPercent(big.NewInt(int64(m.D.Ctx.Trade.GetBuyTargets()[0].GetSlippage())), big.NewInt(database.MaxSlippage))) // support up to two decimal places for the slippage
 		m.D.Ctx.Trade.GetBuyTargets()[0].SetActualAmount(info.InputAmount().Raw())
 		m.D.Ctx.Trade.GetBuyTargets()[0].SetAmountMinMax(min.Raw().String())
 	case database.DefaultAmountModes.GetAmountOut().GetName():
-		max, _ := info.MaximumAmountIn(uniswap.NewPercent(big.NewInt(int64(m.D.Ctx.Trade.GetBuyTargets()[0].GetSlippage())), big.NewInt(10000))) // support up to two decimal places for the slippage
+		max, _ := info.MaximumAmountIn(uniswap.NewPercent(big.NewInt(int64(m.D.Ctx.Trade.GetBuyTargets()[0].GetSlippage())), big.NewInt(database.MaxSlippage))) // support up to two decimal places for the slippage
 		m.D.Ctx.Trade.GetBuyTargets()[0].SetActualAmount(info.OutputAmount().Raw())
 		m.D.Ctx.Trade.GetBuyTargets()[0].SetAmountMinMax(max.Raw().String())
 	}
