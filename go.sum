@@ -393,8 +393,8 @@ github.com/jmespath/go-jmespath v0.4.0/go.mod h1:T8mJZnbsbmF+m6zOOFylbeCJqk5+pHW
 github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfCI6z80xFu9LTZmf1ZRjMHUOPmWr69U=
 github.com/jon4hz/ethconvert v0.0.1 h1:qUURAV++3HD7bk7FS9PZ117VnYte6Ob1XfVtW/xviKQ=
 github.com/jon4hz/ethconvert v0.0.1/go.mod h1:OdAwK1ARJ2UGhDMD7XwkSSiMr4jsvt5HW2yZMxXHUi0=
-github.com/jon4hz/geth-multicall v0.0.20 h1:jKh5RnH/JSe9aL5TIcZJWb9jVH448CBp0ln0nOmsGbM=
-github.com/jon4hz/geth-multicall v0.0.20/go.mod h1:PBnxFefBpOoQQ53M3TP7E+Nag6X9/SdGSNCP4GvcVBU=
+github.com/jon4hz/geth-multicall v0.0.21 h1:glxriHjDlmdBU7ZomjS1PYnl6YmjZ4Fn500KDmPvSRk=
+github.com/jon4hz/geth-multicall v0.0.21/go.mod h1:PBnxFefBpOoQQ53M3TP7E+Nag6X9/SdGSNCP4GvcVBU=
 github.com/jon4hz/go-httpstat v0.2.2 h1:bY183fQ9b+KOw7lPN58JEuVHI2BCuF1lB38aZaiM+RI=
 github.com/jon4hz/go-httpstat v0.2.2/go.mod h1:piHuOd/f3qWwQsK8+jVVMRITF7oRdKk6+T9jHNxBX88=
 github.com/jrick/logrotate v1.0.0/go.mod h1:LNinyqDIJnpAur+b8yyulnQw/wDuN1+BYKlTRt3OuAQ=
