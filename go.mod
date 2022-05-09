@@ -9,7 +9,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.5.0
 	github.com/ethereum/go-ethereum v1.10.17
 	github.com/glebarez/sqlite v1.4.1
-	github.com/google/gops v0.3.22
+	github.com/google/gops v0.3.23
 	github.com/hashicorp/go-retryablehttp v0.7.1
 	github.com/jon4hz/ethconvert v0.0.1
 	github.com/jon4hz/geth-multicall v0.0.21
