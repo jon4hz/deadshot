@@ -8,7 +8,7 @@ require (
 	github.com/charmbracelet/bubbletea v0.20.0
 	github.com/charmbracelet/lipgloss v0.5.0
 	github.com/ethereum/go-ethereum v1.10.17
-	github.com/glebarez/sqlite v1.4.1
+	github.com/glebarez/sqlite v1.4.3
 	github.com/google/gops v0.3.23
 	github.com/hashicorp/go-retryablehttp v0.7.1
 	github.com/jon4hz/ethconvert v0.0.1
@@ -47,7 +47,7 @@ require (
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
 	github.com/dvsekhvalnov/jose2go v1.5.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
-	github.com/glebarez/go-sqlite v1.15.1 // indirect
+	github.com/glebarez/go-sqlite v1.16.0 // indirect
 	github.com/go-ole/go-ole v1.2.6-0.20210915003542-8b1f7f90f6b1 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
@@ -92,5 +92,5 @@ require (
 	modernc.org/libc v1.14.12 // indirect
 	modernc.org/mathutil v1.4.1 // indirect
 	modernc.org/memory v1.0.7 // indirect
-	modernc.org/sqlite v1.15.2 // indirect
+	modernc.org/sqlite v1.16.0 // indirect
 )
