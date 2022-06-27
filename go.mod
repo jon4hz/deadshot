@@ -9,7 +9,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.5.0
 	github.com/ethereum/go-ethereum v1.10.19
 	github.com/glebarez/sqlite v1.4.5
-	github.com/google/gops v0.3.23
+	github.com/google/gops v0.3.24
 	github.com/hashicorp/go-retryablehttp v0.7.1
 	github.com/jon4hz/ethconvert v0.0.1
 	github.com/jon4hz/geth-multicall v0.0.21
@@ -48,7 +48,7 @@ require (
 	github.com/dvsekhvalnov/jose2go v1.5.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/glebarez/go-sqlite v1.17.2 // indirect
-	github.com/go-ole/go-ole v1.2.6-0.20210915003542-8b1f7f90f6b1 // indirect
+	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
@@ -81,8 +81,8 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.3.0 // indirect
-	github.com/tklauser/go-sysconf v0.3.9 // indirect
-	github.com/tklauser/numcpus v0.3.0 // indirect
+	github.com/tklauser/go-sysconf v0.3.10 // indirect
+	github.com/tklauser/numcpus v0.4.0 // indirect
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
 	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
