@@ -23,7 +23,7 @@ require (
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.5.0
 	github.com/spf13/viper v1.12.0
-	github.com/stretchr/testify v1.7.5
+	github.com/stretchr/testify v1.8.0
 	github.com/thomas-tacquet/gormv2-logrus v1.1.2
 	github.com/tyler-smith/go-bip39 v1.1.0
 	github.com/wadey/go-rounding v1.1.0
