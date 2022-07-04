@@ -7,7 +7,7 @@ require (
 	github.com/charmbracelet/bubbles v0.12.0
 	github.com/charmbracelet/bubbletea v0.22.0
 	github.com/charmbracelet/lipgloss v0.5.0
-	github.com/ethereum/go-ethereum v1.10.19
+	github.com/ethereum/go-ethereum v1.10.20
 	github.com/glebarez/sqlite v1.4.5
 	github.com/google/gops v0.3.24
 	github.com/hashicorp/go-retryablehttp v0.7.1
