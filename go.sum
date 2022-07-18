@@ -204,10 +204,10 @@ github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
 github.com/gin-gonic/gin v1.6.3 h1:ahKqKTFpO5KTPHxWZjEdPScmYaGtLo8Y4DMHoEsnp14=
 github.com/gin-gonic/gin v1.6.3/go.mod h1:75u5sXoLsGZoRN5Sgbi1eraJ4GU3++wFwWzhwvtwp4M=
-github.com/glebarez/go-sqlite v1.17.2 h1:gyTyFr2RFFQd2gp6fOOdfnTvUn99zwvVOrQFHA4S+DY=
-github.com/glebarez/go-sqlite v1.17.2/go.mod h1:lakPjzvnJ6uSIARV+5dPALDuSLL3879PlzHFMEpbceM=
-github.com/glebarez/sqlite v1.4.5 h1:oaJupO4X9iTn4sXRvP5Vs15BNvKh9dx5AQfciKlDvV4=
-github.com/glebarez/sqlite v1.4.5/go.mod h1:6D+bB+DdXlEC4mO+pUFJWixVcnrHTIAJ9U6Ynnn4Lxk=
+github.com/glebarez/go-sqlite v1.17.3 h1:Rji9ROVSTTfjuWD6j5B+8DtkNvPILoUC3xRhkQzGxvk=
+github.com/glebarez/go-sqlite v1.17.3/go.mod h1:Hg+PQuhUy98XCxWEJEaWob8x7lhJzhNYF1nZbUiRGIY=
+github.com/glebarez/sqlite v1.4.6 h1:D5uxD2f6UJ82cHnVtO2TZ9pqsLyto3fpDKHIk2OsR8A=
+github.com/glebarez/sqlite v1.4.6/go.mod h1:WYEtEFjhADPaPJqL/PGlbQQGINBA3eUAfDNbKFJf/zA=
 github.com/glycerine/go-unsnap-stream v0.0.0-20180323001048-9f0cb55181dd/go.mod h1:/20jfyN9Y5QPEAprSgKAUr+glWDY39ZiUEAYOEv5dsE=
 github.com/glycerine/goconvey v0.0.0-20190410193231-58a59202ab31/go.mod h1:Ogl1Tioa0aV7gstGFO7KhffUsb9M4ydbEbbxpcEDc24=
 github.com/go-chi/chi/v5 v5.0.0/go.mod h1:BBug9lr0cqtdAhsu6R4AAdvufI0/XBzAQSsUqJpoZOs=
@@ -1047,7 +1047,6 @@ gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b/go.mod h1:K4uyk7z7BCEPqu6E+C
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gorm.io/driver/sqlite v1.3.1 h1:bwfE+zTEWklBYoEodIOIBwuWHpnx52Z9zJFW5F33WLk=
-gorm.io/gorm v1.23.5/go.mod h1:l2lP/RyAtc1ynaTjFksBde/O8v9oOGIApu2/xRitmZk=
 gorm.io/gorm v1.23.8 h1:h8sGJ+biDgBA1AD1Ha9gFCx7h8npU7AsLdlkX0n2TpE=
 gorm.io/gorm v1.23.8/go.mod h1:l2lP/RyAtc1ynaTjFksBde/O8v9oOGIApu2/xRitmZk=
 gotest.tools v2.2.0+incompatible/go.mod h1:DsYFclhRJ6vuDpmuTbkuFWG+y2sxOXAzmJt81HFBacw=
@@ -1079,8 +1078,8 @@ modernc.org/mathutil v1.4.1/go.mod h1:mZW8CKdRPY1v87qxC/wUdX5O1qDzXMP5TH3wjfpga6
 modernc.org/memory v1.1.1 h1:bDOL0DIDLQv7bWhP3gMvIrnoFw+Eo6F7a2QK9HPDiFU=
 modernc.org/memory v1.1.1/go.mod h1:/0wo5ibyrQiaoUoH7f9D8dnglAmILJ5/cxZlRECf+Nw=
 modernc.org/opt v0.1.1/go.mod h1:WdSiB5evDcignE70guQKxYUl14mgWtbClRi5wmkkTX0=
-modernc.org/sqlite v1.17.2 h1:TjmF36Wi5QcPYqRoAacV1cAyJ7xB/CD0ExpVUEMebnw=
-modernc.org/sqlite v1.17.2/go.mod h1:GOQmuiXd6pTTes1Fi2s9apiCcD/wbKQtBZ0Nw6/etjM=
+modernc.org/sqlite v1.17.3 h1:iE+coC5g17LtByDYDWKpR6m2Z9022YrSh3bumwOnIrI=
+modernc.org/sqlite v1.17.3/go.mod h1:10hPVYar9C0kfXuTWGz8s0XtB8uAGymUy51ZzStYe3k=
 modernc.org/strutil v1.1.1/go.mod h1:DE+MQQ/hjKBZS2zNInV5hhcipt5rLPWkmpbGeW5mmdw=
 modernc.org/tcl v1.13.1/go.mod h1:XOLfOwzhkljL4itZkK6T72ckMgvj0BDsnKNdZVUOecw=
 modernc.org/token v1.0.0/go.mod h1:UGzOrNV1mAFSEB63lOFHIpNRUVMvYTc6yu1SMY/XTDM=
