@@ -75,6 +75,13 @@ func saveToken(token *Token) *gorm.DB {
 }
 
 func saveTrade(trade *Trade) *gorm.DB {
+	// fetch the complete token info to avoid duplicates
+	if db := findTokenByContractAndNetworkID(trade.Token0, trade.Token0.Contract, trade.NetworkID); db.Error != nil {
+		return db
+	}
+	if db := findTokenByContractAndNetworkID(trade.Token1, trade.Token1.Contract, trade.NetworkID); db.Error != nil {
+		return db
+	}
 	return db.Save(trade)
 }
 
@@ -82,14 +89,14 @@ func updateTokenBalance(tokenID uint, balance string) *gorm.DB {
 	return db.Model(&Token{}).Where("id = (?)", tokenID).Update("balance", balance)
 }
 
-func findTokenIDByContractAndNetworkID(dest *uint, contract string, tradeID uint) *gorm.DB {
-	return db.Select("id").Where("contract = (?) AND network_id = (?)", contract, tradeID).Table("tokens").Find(dest)
+func findTokenIDByContractAndNetworkID(dest *uint, contract string, networkID uint) *gorm.DB {
+	return db.Select("id").Where("contract = (?) AND network_id = (?)", contract, networkID).Table("tokens").Find(dest)
 }
 
-func findTokenBalanceByContractAndNetworkID(dest *string, contract string, tradeID uint) *gorm.DB {
-	return db.Select("balance").Where("contract = (?) AND network_id = (?)", contract, tradeID).Table("tokens").Find(dest)
+func findTokenBalanceByContractAndNetworkID(dest *string, contract string, networkID uint) *gorm.DB {
+	return db.Select("balance").Where("contract = (?) AND network_id = (?)", contract, networkID).Table("tokens").Find(dest)
 }
 
-func findTokenByContractAndNetworkID(dest *Token, contract string, tradeID uint) *gorm.DB {
-	return db.Where("contract = (?) AND network_id = (?)", contract, tradeID).Table("tokens").Find(dest)
+func findTokenByContractAndNetworkID(dest *Token, contract string, networkID uint) *gorm.DB {
+	return db.Where("contract = (?) AND network_id = (?)", contract, networkID).Table("tokens").Find(dest)
 }
