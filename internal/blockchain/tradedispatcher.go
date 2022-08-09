@@ -196,7 +196,7 @@ func (c *Client) dispatchTrade(cancel context.CancelFunc, wallet *database.Walle
 					// if the actual sell amount is unknown, which is the case if the buy transaction is not confirmed yet
 					// then we skip the error, mark the target as not hit and return nil.
 					// When the next dispatcher runs, the target gets evaluated again.
-					if errors.As(err, &uniswap.ErrNilAmount) {
+					if errors.Is(err, uniswap.ErrNilAmount) {
 						v.SetHit(false)
 						return nil
 					}

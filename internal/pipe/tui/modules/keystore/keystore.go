@@ -109,7 +109,7 @@ func (m *Module) Update(msg tea.Msg) tea.Cmd {
 		}
 
 	case modules.ErrMsg:
-		if errors.As(msg, &wallet.ErrWrongPassword) {
+		if errors.Is(msg, wallet.ErrWrongPassword) {
 			m.err = modules.Error{
 				Message: "wrong password",
 				Help:    "please, try again",
