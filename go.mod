@@ -8,7 +8,7 @@ require (
 	github.com/charmbracelet/bubbletea v0.22.1
 	github.com/charmbracelet/lipgloss v0.6.0
 	github.com/ethereum/go-ethereum v1.10.23
-	github.com/glebarez/sqlite v1.4.6
+	github.com/glebarez/sqlite v1.5.0
 	github.com/google/gops v0.3.25
 	github.com/hashicorp/go-retryablehttp v0.7.1
 	github.com/jon4hz/ethconvert v0.0.1
@@ -29,7 +29,7 @@ require (
 	github.com/wadey/go-rounding v1.1.0
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	gopkg.in/yaml.v2 v2.4.0
-	gorm.io/gorm v1.23.8
+	gorm.io/gorm v1.24.0
 	nhooyr.io/websocket v1.8.7
 )
 
@@ -47,7 +47,7 @@ require (
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
 	github.com/dvsekhvalnov/jose2go v1.5.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
-	github.com/glebarez/go-sqlite v1.17.3 // indirect
+	github.com/glebarez/go-sqlite v1.19.1 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
@@ -91,8 +91,8 @@ require (
 	gopkg.in/ini.v1 v1.66.4 // indirect
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	modernc.org/libc v1.16.8 // indirect
-	modernc.org/mathutil v1.4.1 // indirect
-	modernc.org/memory v1.1.1 // indirect
-	modernc.org/sqlite v1.17.3 // indirect
+	modernc.org/libc v1.19.0 // indirect
+	modernc.org/mathutil v1.5.0 // indirect
+	modernc.org/memory v1.4.0 // indirect
+	modernc.org/sqlite v1.19.1 // indirect
 )
